@@ -1,0 +1,21 @@
+* {margin:0;padding:0;box-sizing: border-box;}
+li,ul {list-style: none;}
+a {text-decoration: none;}
+h1,h2,h3,h4,h5,h6 {font-style:normal;}
+body {background:black;font-size:28px;}
+.fl {float:left;}
+.fr {float:right;}
+.clearfix:after {
+  content:" ";
+  display:block;
+  clear:both;
+  height:0;
+}
+input,textarea {
+  outline:none;
+  border:none;
+}
+.iconfont {
+  color:#fff;
+  cursor:pointer;
+}
