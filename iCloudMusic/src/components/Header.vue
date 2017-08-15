@@ -76,7 +76,7 @@
 
 <script>
 export default {
-  name: 'head',
+  name: 'header',
   data () {
     return {
       showInfo: false
@@ -87,6 +87,10 @@ export default {
 
 <style lang="less" rel="stylesheet/less" scoped>
   .head {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
     height:120px;
     border-bottom: 2px solid #a81d0f;
     background:#b72712;
@@ -151,6 +155,7 @@ export default {
             width:105px;
             border-radius:6px;
             border:1px solid #9b180d;
+            overflow:hidden;
             &>span {
               display:inline-block;
               width:50%;

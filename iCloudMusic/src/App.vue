@@ -1,16 +1,22 @@
 <template>
   <div id="app">
     <Header></Header>
+    <div class="content">
+      <router-view></router-view>
+    </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
   import Header from '@/components/Header'
+  import Footer from '@/components/Footer'
 
 export default {
   name: 'app',
   components: {
-          Header
+          Header,
+          Footer
   }
 }
 </script>
@@ -29,5 +35,10 @@ export default {
   border-radius: 10px;
   background:#fff;
   overflow: hidden;
+  .content {
+    height:100%;
+    width:100%;
+    padding:120px 0 130px;
+  }
 }
 </style>
