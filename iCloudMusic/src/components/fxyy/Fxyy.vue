@@ -2,10 +2,10 @@
     <div class="fxyy">
         <div class="header">
             <router-link tag="span" to="/fxyy/tuijian">推荐</router-link>
-            <span>排行榜</span>
-            <span>歌单</span>
-            <span>主播电台</span>
-            <span>最新音乐</span>
+            <router-link tag="span" to="/fxyy/rank-list">排行榜</router-link>
+            <router-link tag="span" to="/fxyy/song-list">歌单</router-link>
+            <router-link tag="span" to="/fxyy/zb-dt">主播电台</router-link>
+            <router-link tag="span" to="/fxyy/new-music">最新音乐</router-link>
         </div>
         <div class="fxyy-content" style="height:calc(100% - 88px)">
             <router-view></router-view>

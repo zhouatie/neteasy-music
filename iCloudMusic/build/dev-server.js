@@ -23,6 +23,51 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 var compiler = webpack(webpackConfig)
 
+
+var superagent = require("superagent");
+var cheerio = require("cheerio");
+
+
+// ================================================
+
+ app.get('/init',function(req,res) {
+    
+    var startData = {
+      lists:[],
+      newSongLists:[]
+    };
+
+    superagent.get("http://music.163.com/discover")
+            .end(function(error,data){
+                var html = data.text;
+                var $ = cheerio.load(html);
+                $(".m-cvrlst").find("li").each(function(){
+                  var imgSrc = $(this).find('img').attr("src");
+                  var num = $(this).find("span.nb").text();
+                  var dec = $(this).find("p.dec").text();
+                  startData.lists.push({
+                    src : imgSrc,
+                    num : num,
+                    dec : dec
+                  })
+                });
+                
+                res.send(startData);
+            });
+   
+            
+            
+  })
+
+//=================================================
+
+
+
+
+
+
+
+
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true
@@ -79,6 +124,16 @@ devMiddleware.waitUntilValid(() => {
   }
   _resolve()
 })
+
+
+
+
+
+
+
+
+
+
 
 var server = app.listen(port)
 

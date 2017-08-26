@@ -27,35 +27,12 @@
                 <span>热门精选</span>
             </div>
             <ul class="hot-select-items clearfix">
-                <li class="hot-select-item">
+                <li v-for="item in hotLists[0]" class="hot-select-item">
                     <div class="item-img-wrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
+                        <img :src="item.src" alt="">
+                        <p class="item-img-title"><i class="erji"></i><span>{{item.num}}</span></p>
                     </div>
-                    <p class="item-text">报告老大，我还有话跟你说......</p>
-                </li>
-                <li class="hot-select-item">
-                    <div class="item-img-wrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
-                    </div>
-                    <p class="item-text">报告老大，我还有话跟你说......</p>
-                </li>
-                <li class="hot-select-item">
-                    <div class="item-img-wrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
-                    </div>
-                    <p class="item-text">报告老大，我还有话跟你说......</p>
-                </li>
-                <li class="hot-select-item">
-                    <div class="item-img-wrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
-                    </div>
-                    <p class="item-text">报告老大，我还有话跟你说......</p>
-                </li>
-                <li class="hot-select-item">
-                    <div class="item-img-wrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
-                    </div>
-                    <p class="item-text">报告老大，我还有话跟你说......</p>
+                    <p class="item-text">{{item.dec}}</p>
                 </li>
             </ul>
         </div>
@@ -65,8 +42,9 @@
             </div>
             <ul class="gxh-tj-items clearfix">
                 <li class="gxh-tj-item">
-                    <div class="imgWrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
+                    <div class="imgWrap gxh-date-wrap">
+                        6
+                       <span class="date-bg-bottom"></span>
                     </div>
                     <div class="textWrap">
                         <dl>
@@ -75,29 +53,7 @@
                         </dl>
                     </div>
                 </li>
-                <li class="gxh-tj-item">
-                    <div class="imgWrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
-                    </div>
-                    <div class="textWrap">
-                        <dl>
-                            <dt>每日歌曲推荐</dt>
-                            <dd>根据你的口味生成，每天更新！</dd>
-                        </dl>
-                    </div>
-                </li>
-                <li class="gxh-tj-item">
-                    <div class="imgWrap">
-                        <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
-                    </div>
-                    <div class="textWrap">
-                        <dl>
-                            <dt>每日歌曲推荐</dt>
-                            <dd>根据你的口味生成，每天更新！</dd>
-                        </dl>
-                    </div>
-                </li>
-                <li class="gxh-tj-item">
+                <li class="gxh-tj-item" >
                     <div class="imgWrap">
                         <p class="item-img-title"><i class="erji"></i><span>34576</span></p>
                     </div>
@@ -268,8 +224,21 @@
 export default {
     data() {
         return {
-
+            hotLists:[],
+            gxh: {}
         }
+    },
+    computed : {
+
+    },
+    mounted(){
+        this.$http.get("/init").then( res => {
+            //this.hotLists = Object.assign({}, this.hotLists, res.data.lists)
+            this.$set(this.hotLists,0,res.data.lists)
+            // var arr =  res.data.lists;
+            // this.hotLists = arr;
+            //this.$set(this.gxhLists,0,res.data.gxh.lists);
+        })
     }
 }
 </script>
@@ -427,10 +396,9 @@ export default {
             .hot-select-item {
                 float:left;
                 width:300px;
+                height:390px;
                 margin-right:94px;
-                background:red;
                 margin-bottom:76px;
-                
                 &:nth-of-type(4n) {
                     margin-right:0;
                 }
@@ -438,7 +406,7 @@ export default {
                     position:relative;  
                     height:300px;
                     width:300px;
-                    background:green;
+                    img {width:100%;height:100%;}
                     &:before {
                         content:"";
                         position:absolute;
@@ -473,8 +441,29 @@ export default {
                     float:left;
                     width:244px;
                     height:244px;
-                    background:green;
                     border:2px solid rgba(192, 192, 192,.2);
+                    &.gxh-date-wrap {
+                        border-radius:8px;
+                        font-size:150px;
+                        line-height:244px;
+                        color:#c75c5b;
+                        font-weight:bold;
+                        text-align:center;
+                        background:linear-gradient(top, #fff 0,#f6f6f6 50%,#fff 50%,#fff 100%);
+                        span {
+                            display:inline-block;
+                            width:100%;
+                            height:50%;
+                            text-align:center;
+                            &.date-bg-bottom {
+                                position:absolute;
+                                left:0;
+                                bottom:0;
+                                background:rgba(255,255,255,.2)
+                            }
+                            
+                        }
+                    }
                     
                 }
                 .textWrap {
