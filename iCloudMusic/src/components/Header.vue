@@ -45,15 +45,15 @@
               <ul class="info-lists clearfix">
                 <li>
                   <p class="info-num-wrap">0</p>
-                  <p class="info-name">动态</p>    
+                  <p class="info-name">动态</p>
                 </li>
                 <li>
                   <p class="info-num-wrap">9</p>
-                  <p class="info-name">关注</p>    
+                  <p class="info-name">关注</p>
                 </li>
                 <li>
                   <p class="info-num-wrap">0</p>
-                  <p class="info-name">粉丝</p>    
+                  <p class="info-name">粉丝</p>
                 </li>
               </ul>
             </div>
@@ -195,7 +195,7 @@ export default {
             }
           }
         }
-        
+
       }
     }
     .header-right {
@@ -227,7 +227,7 @@ export default {
               color:#b72712;
               font-weight:bold;
             }
-          } 
+          }
         }
         .setting {
           font-size:28px;
@@ -282,6 +282,7 @@ export default {
             border-radius:8px;
             border:2px solid #c3c3c3;
             background:#fafafa;
+            z-index: 1;
             &:before {
               content:"";
               position:absolute;
