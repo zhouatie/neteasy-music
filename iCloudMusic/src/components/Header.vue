@@ -283,6 +283,7 @@ export default {
             border:2px solid #c3c3c3;
             background:#fafafa;
             z-index: 1;
+          
             &:before {
               content:"";
               position:absolute;
